@@ -1,0 +1,19 @@
+site_name: cmake-example
+site_url: https://cmake-example.readthedocs.io
+site_description: Example pybind11 module built with a CMake-based build system.
+site_author: district10
+
+repo_url: https://github.com/cubao/cmake_example
+edit_uri: blob/master/docs/
+
+theme: readthedocs
+nav:
+  - Home: index.md
+  - Code: code.md
+  - About:
+      - Release Notes: about/release-notes.md
+      - License: about/license.md
+plugins:
+  - include-markdown
+
+copyright: Copyright &copy; 2023 <a href="https://cubao.readthedocs.io">cubao team</a>.
