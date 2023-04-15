@@ -4,21 +4,13 @@
 
 ## Upgrading
 
-To upgrade `cubao_cmake_example` to the latest version, use pip:
+To upgrade `cubao_pybind` to the latest version, use pip:
 
 ```bash
-pip install -U cubao_cmake_example
+pip install -U cubao-pybind
 ```
 
-## Version 0.0.3 (2023-03-04)
-
-*   Add macOS arm64 (for m1 chip)
-
-## Version 0.0.2 (2023-03-03)
-
-*   Release to pypi on GitHub workflow
-
-## Version 0.0.1 (2022-10-14)
+## Version 0.0.1 (2023-04-16)
 
 *   First release to pypi
 
@@ -26,5 +18,5 @@ pip install -U cubao_cmake_example
 
 You can also checkout releases on:
 
--   GitHub: <https://github.com/cubao/cmake_example/releases>
--   PyPi: <https://pypi.org/project/cubao-cmake-example>
+-   GitHub: <https://github.com/cubao/cubao-pybind/releases>
+-   PyPi: <https://pypi.org/project/cubao-pybind>
