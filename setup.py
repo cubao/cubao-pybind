@@ -41,9 +41,6 @@ class CMakeBuild(build_ext):
         # Can be set with Conda-Build, for example.
         cmake_generator = os.environ.get("CMAKE_GENERATOR", "")
 
-        # Set Python_EXECUTABLE instead if you use PYBIND11_FINDPYTHON
-        # EXAMPLE_VERSION_INFO shows you how to pass a value into the C++ code
-        # from Python.
         cmake_args = [
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}{os.sep}",
             f"-DPYTHON_EXECUTABLE={sys.executable}",
@@ -56,7 +53,7 @@ class CMakeBuild(build_ext):
             cmake_args += [item for item in os.environ["CMAKE_ARGS"].split(" ") if item]
 
         # In this example, we pass in the version to C++. You might not need to.
-        cmake_args += [f"-DEXAMPLE_VERSION_INFO={self.distribution.get_version()}"]  # type: ignore[attr-defined]
+        cmake_args += [f"-DCUBAO_PYBIND_VERSION_INFO={self.distribution.get_version()}"]  # type: ignore[attr-defined]
 
         if self.compiler.compiler_type != "msvc":
             # Using Ninja-build since it a) is available as a wheel and b)
@@ -126,19 +123,19 @@ class CMakeBuild(build_ext):
 # The information here can also be placed in setup.cfg - better separation of
 # logic and declaration, and simpler if you include description/version in a file.
 setup(
-    name="cubao_cmake_example",
-    version="0.0.3",
+    name="cubao_pybind",
+    version="0.0.1",
     author="tzx",
     author_email="dvorak4tzx@gmail.com",
-    url="https://cmake-example.readthedocs.io",
-    description="A test project using pybind11 and CMake",
+    url="https://cubao-pybind.readthedocs.io",
+    description="misc c++ code in cubao",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     packages=find_packages(),
-    ext_modules=[CMakeExtension("cubao_cmake_example")],
+    ext_modules=[CMakeExtension("cubao_pybind")],
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
     python_requires=">=3.7",
-    install_requires=["fire"],
+    install_requires=["fire", "loguru", "tqdm"],
     extras_require={"test": ["pytest>=6.0"]},
 )

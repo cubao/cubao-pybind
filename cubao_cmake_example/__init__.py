@@ -1,5 +1,5 @@
-from pybind11_cubao_cmake_example import *  # noqa: F403
-from pybind11_cubao_cmake_example import __version__  # noqa: F401
+from _cubao_pybind import *  # noqa: F403
+from _cubao_pybind import __version__  # noqa: F401
 
 
 def pure_python_func(

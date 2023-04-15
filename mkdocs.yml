@@ -1,9 +1,9 @@
-site_name: cmake-example
-site_url: https://cmake-example.readthedocs.io
-site_description: Example pybind11 module built with a CMake-based build system.
+site_name: cubao-pybind
+site_url: https://cubao-pybind.readthedocs.io
+site_description: misc c++ code in cubao
 site_author: district10
 
-repo_url: https://github.com/cubao/cmake_example
+repo_url: https://github.com/cubao/cubao-pybind
 edit_uri: blob/master/docs/
 
 theme: readthedocs
