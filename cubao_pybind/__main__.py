@@ -1,4 +1,4 @@
-from _cubao_pybind import *  # noqa: F403
+from cubao_pybind import *  # noqa: F403
 
 if __name__ == "__main__":
     import fire
