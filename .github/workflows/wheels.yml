@@ -6,9 +6,6 @@ on:
   push:
     branches:
      - master
-  release:
-    types:
-      - published
 
 jobs:
   build_sdist:
@@ -43,16 +40,10 @@ jobs:
       with:
         submodules: true
 
-    - name: Set up QEMU
-      if: runner.os == 'Linux'
-      uses: docker/setup-qemu-action@v2
-      with:
-        platforms: all
-
     - uses: pypa/cibuildwheel@v2.12.0
       env:
         # CIBW_ARCHS: auto64
-        CIBW_ARCHS_LINUX: x86_64 aarch64
+        CIBW_ARCHS_LINUX: x86_64
         CIBW_ARCHS_WINDOWS: AMD64 # ARM64
         CIBW_ARCHS_MACOS: x86_64 arm64
         CIBW_BEFORE_BUILD: pip install numpy fire --prefer-binary
@@ -71,10 +62,9 @@ jobs:
 
 
   upload_all:
-    name: Upload if release
+    name: Upload if non-exist
     needs: [build_wheels, build_sdist]
     runs-on: ubuntu-latest
-    if: github.event_name == 'release' && github.event.action == 'published'
 
     steps:
     - uses: actions/setup-python@v4
@@ -86,6 +76,7 @@ jobs:
         name: artifact
         path: dist
 
-    - uses: pypa/gh-action-pypi-publish@v1.6.4
+    - uses: pypa/gh-action-pypi-publish@master
       with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
+        password: ${{ secrets.pypi_password }}
+        skip_existing: true
