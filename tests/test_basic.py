@@ -7,5 +7,10 @@ def test_main():
     assert m.subtract(1, 2) == -1
 
 
-print(xxhash_for_file(__file__, algo=64))
-print(xxhash('hello'))
+def test_hash():
+    print(xxhash_for_file(__file__))
+    print(xxhash("hello"))
+    print(xxhash("hello", algo=3))
+    print(xxhash("hello", algo=128))
+    print(xxhash("hello", algo=64))
+    print(xxhash("hello", algo=32))
