@@ -45,9 +45,9 @@ inline std::string __hash(Multihash hash, AlgoSelected algo)
         return fmt::format("{:016x}{:016x}", (uint64_t)hash.hash128.high64,
                            (uint64_t)hash.hash128.low64);
     } else if (algo == AlgoSelected::algo_xxh64) {
-        return fmt::format("{:032x}", hash.hash64);
+        return fmt::format("{:016x}", hash.hash64);
     } else {
-        return fmt::format("{:04x}", (uint32_t)hash.hash32);
+        return fmt::format("{:08x}", (uint32_t)hash.hash32);
     }
 }
 
@@ -60,7 +60,7 @@ inline std::string __hash(Multihash hash, AlgoSelected algo)
  * using `buffer` of size `blockSize` for temporary storage.
  */
 inline Multihash XSUM_hashStream(FILE *inFile, AlgoSelected hashType,
-                                 void *buffer, size_t blockSize, bool succ)
+                                 void *buffer, size_t blockSize, bool &succ)
 {
     XXH32_state_t state32;
     XXH64_state_t state64;
@@ -93,6 +93,7 @@ inline Multihash XSUM_hashStream(FILE *inFile, AlgoSelected hashType,
         }
         if (ferror(inFile)) {
             succ = false;
+            spdlog::error("Failed at reading file");
             return Multihash{0};
         }
     }
@@ -127,6 +128,7 @@ bool __xxhashForFile(const std::string &path, Multihash &hash,
     std::vector<uint8_t> buffer(blockSize);
     FILE *inFile = fopen(path.c_str(), "rt");
     if (!inFile) {
+        spdlog::error("Failed to open file: {}", path);
         return false;
     }
     bool succ = false;
