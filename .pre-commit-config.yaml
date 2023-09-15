@@ -67,3 +67,4 @@ repos:
   rev: v13.0.0
   hooks:
   - id: clang-format
+    exclude: src/xxhash.h
