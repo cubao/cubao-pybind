@@ -9,6 +9,8 @@ namespace py = pybind11;
 using namespace pybind11::literals;
 using rvp = py::return_value_policy;
 
+namespace cubao
+{
 // extracted from xxhsum.c
 typedef union
 {
@@ -196,3 +198,4 @@ void bind_xxhash(py::module &m)
         //
         ;
 }
+} // namespace cubao
