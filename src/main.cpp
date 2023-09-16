@@ -7,6 +7,11 @@ int add(int i, int j) { return i + j; }
 
 namespace py = pybind11;
 
+namespace cubao
+{
+void bind_xxhash(py::module &m);
+}
+
 PYBIND11_MODULE(_cubao_pybind, m)
 {
     m.doc() = R"pbdoc(
@@ -32,6 +37,8 @@ PYBIND11_MODULE(_cubao_pybind, m)
 
         Some other explanation about the subtract function.
     )pbdoc");
+
+    cubao::bind_xxhash(m);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);

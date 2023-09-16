@@ -8,7 +8,7 @@
 
 <div class="text-center">
    <a href="https://github.com/cubao/cubao-pybind" class="btn btn-primary" role="button">Code on GitHub</a>
-   <a href="https://pypi.org/project/pybind" class="btn btn-primary" role="button">Package on Pypi</a>
+   <a href="https://pypi.org/project/cubao-pybind" class="btn btn-primary" role="button">Package on Pypi</a>
 </div>
 
 ## Related

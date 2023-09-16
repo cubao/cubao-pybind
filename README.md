@@ -28,4 +28,10 @@ $ python3 -m cubao_pybind --help
 $ python3 -m cubao_pybind pure_python_func --help
 ```
 
+More:
+
+```bash
+python3 -m cubao_pybind xxhash_for_file README.md
+```
+
 <!--intro-end-->
